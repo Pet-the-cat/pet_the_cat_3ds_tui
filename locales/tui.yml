@@ -1,0 +1,28 @@
+_version: 2
+title:
+  en: "Pet the cat!"
+  fr: "Caresse le chat !"
+
+cat_petted:
+  en: "Cat petted: %{cat_petted}"
+  fr: "Chat caressé : %{cat_petted}"
+multiplier:
+  en: "Multiplier: %{multiplier}"
+  fr: "Multiplicateur : %{multiplier}"
+petting_machine:
+  en: "Petting machine: %{petting_machine}"
+  fr: "Machine à caresser : %{petting_machine}"
+
+pet_the_cat:
+  en: "Pet the cat"
+  fr: "Caresser le chat"
+multiplier_buy_text:
+  en: "Buy a multiplier"
+  fr: "Acheter multiplicateur"
+petting_machine_buy_text:
+  en: "Buy a petting machine"
+  fr: "Acheter machine"
+  
+save_quit_text:
+  en: "Press <START> to save & quit."
+  fr: "Appuyez sur <START> pour sauvegarder et quitter."
