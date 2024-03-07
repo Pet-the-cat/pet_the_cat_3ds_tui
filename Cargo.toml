@@ -3,7 +3,7 @@ name = "pet_the_cat_3ds_tui"
 version = "0.1.0"
 edition = "2021"
 authors = ["Tom Olivier <contact.tom60@proton.me>"]
-#license = "TBD"
+license = "MIT"
 
 [dependencies]
 pet_the_cat = { git = "https://github.com/Pet-the-cat/pet_the_cat", tag = "v0.1.0" }
