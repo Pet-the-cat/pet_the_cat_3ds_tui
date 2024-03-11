@@ -145,7 +145,7 @@ checksum = "248e3bacc7dc6baa3b21e405ee045c3047101a49145e7e9eca583ab4c2ca5345"
 [[package]]
 name = "ctru-rs"
 version = "0.7.1"
-source = "git+https://github.com/rust3ds/ctru-rs#c63932ccbb980c4b5693e8c152b6206c868d0e97"
+source = "git+https://github.com/Tom60-rust3ds/ctru-rs#f9f5b807773fa5dbc56605439f1adba7b4e5a51f"
 dependencies = [
  "bitflags 2.4.2",
  "cfg-if",
@@ -161,7 +161,7 @@ dependencies = [
 [[package]]
 name = "ctru-sys"
 version = "0.5.0"
-source = "git+https://github.com/rust3ds/ctru-rs#c63932ccbb980c4b5693e8c152b6206c868d0e97"
+source = "git+https://github.com/Tom60-rust3ds/ctru-rs#f9f5b807773fa5dbc56605439f1adba7b4e5a51f"
 dependencies = [
  "bindgen",
  "cc",
@@ -403,7 +403,7 @@ dependencies = [
 
 [[package]]
 name = "pet_the_cat_3ds_tui"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "ctru-rs",
  "pet_the_cat",
@@ -475,7 +475,7 @@ dependencies = [
 [[package]]
 name = "pthread-3ds"
 version = "0.1.0"
-source = "git+https://github.com/rust3ds/pthread-3ds.git#c885d8cda6d0c5b429b5db3a2408bf204fc1097e"
+source = "git+https://github.com/Tom60-rust3ds/pthread-3ds#b5047f0691f10f8d3ed6d6a0d5476a282f6ddb2e"
 dependencies = [
  "ctru-sys",
  "libc",
@@ -676,7 +676,7 @@ dependencies = [
 [[package]]
 name = "shim-3ds"
 version = "0.1.0"
-source = "git+https://github.com/rust3ds/shim-3ds.git#2d3ebe6ad4e5038d99b0e3376dbac008e66f3e1d"
+source = "git+https://github.com/Tom60-rust3ds/shim-3ds#52e901c9968941201efda99af3f0b5b6df245d2a"
 dependencies = [
  "ctru-sys",
  "libc",

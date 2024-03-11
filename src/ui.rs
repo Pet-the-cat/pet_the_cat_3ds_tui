@@ -1,6 +1,6 @@
 use crate::app::App;
 use pet_the_cat::game::{MULTIPLIER_COST, PETTING_MACHINE_COST};
-use ctru::prelude::Console;
+use ctru::console::Console;
 
 /// Print the user interface.
 /// 
@@ -9,9 +9,23 @@ use ctru::prelude::Console;
 /// * `app` - The application.
 /// * `top_console` - The top console.
 /// * `bottom_console` - The bottom console.
-pub fn print(app: &App, top_console: &Console<'_>, bottom_console: &Console<'_>) {
-    print_top_screen(app, top_console);
+pub fn print(app: &App, top_console: &Console, bottom_console: &Console) {
+    print_top_screen(app, top_console, true);
     print_bottom_screen(app, bottom_console);
+}
+
+/// Print the user interface with 3D capabilities.
+/// 
+/// # Arguments
+/// 
+/// * `app` - The application.
+/// * `top_screen` - The top 3D screen.
+/// * `bottom_console` - The bottom console.
+pub fn print_3d(app: &App, top_left: &Console, top_right: &Console, bottom: &Console) {
+    print_top_screen(app, top_left, true);
+    print_top_screen(app, top_right, false);
+
+    print_bottom_screen(app, bottom);
 }
 
 /// Print the top screen.
@@ -20,9 +34,17 @@ pub fn print(app: &App, top_console: &Console<'_>, bottom_console: &Console<'_>)
 /// 
 /// * `app` - The application.
 /// * `console` - The console to print to.
-fn print_top_screen(app: &App, console: &Console<'_>) {
+/// * `clear` - If the console should be cleared.
+///
+/// # Notes
+/// 
+/// The maximum length of the text is 50 characters and 100 in wide mode and the maximum height is 30.
+/// `console.max_width()`
+fn print_top_screen(app: &App, console: &Console, clear: bool) {
     console.select();
-    console.clear();
+    if clear {
+        console.clear();
+    }
 
     println!("\x1b[5;15H{}", t!("title"));
 
@@ -30,7 +52,7 @@ fn print_top_screen(app: &App, console: &Console<'_>) {
     println!("\x1b[15;15H{}", t!("multiplier", multiplier = app.game.multiplier));
     println!("\x1b[20;15H{}", t!("petting_machine", petting_machine = app.game.petting_machine));
 
-    println!("\x1b[29;1H{}", t!("save_quit_text"));
+    println!("\x1b[28;2H{}", t!("save_quit_text"));
 }
 
 /// Print the bottom screen.
@@ -42,8 +64,9 @@ fn print_top_screen(app: &App, console: &Console<'_>) {
 ///
 /// # Notes
 /// 
-/// The maximum length of the text is 40 characters.
-fn print_bottom_screen(app: &App, console: &Console<'_>) {    
+/// The maximum length of the text is 40 characters and the maximum height is 30.
+/// `console.max_width()`
+fn print_bottom_screen(app: &App, console: &Console) {    
     console.select();
     console.clear();
   

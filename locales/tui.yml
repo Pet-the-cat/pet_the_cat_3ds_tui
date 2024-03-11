@@ -26,3 +26,7 @@ petting_machine_buy_text:
 save_quit_text:
   en: "Press <START> to save & quit."
   fr: "Appuyez sur <START> pour sauvegarder et quitter."
+
+read_save_fail:
+  en: "Failed to read save file, fix it or delete it and restart the game"
+  fr: "Impossible de lire le fichier de sauvegarde, corrigez-le ou supprimez-le et redémarrez le jeu"

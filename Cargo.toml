@@ -1,15 +1,19 @@
 [package]
 name = "pet_the_cat_3ds_tui"
-version = "0.1.0"
-edition = "2021"
+version = "0.2.0"
 authors = ["Tom Olivier <contact.tom60@proton.me>"]
+description = "A 3DS game that lets you pet cats."
+repository = "https://github.com/Pet-the-cat/pet_the_cat_3ds_tui"
+keywords = ["3ds", "rust", "game", "pet", "cat", "homebrew", "cookie", "clicker"]
 license = "MIT"
+edition = "2021"
+rust-version = "1.76"
 
 [dependencies]
 pet_the_cat = { git = "https://github.com/Pet-the-cat/pet_the_cat", tag = "v0.1.0" }
-ctru-rs = { git = "https://github.com/rust3ds/ctru-rs" }
+ctru-rs = { git = "https://github.com/Tom60-rust3ds/ctru-rs"}
 rust-i18n = "3"
 toml = "0.8.8"
 
-[package.metadata.cargo-3ds]
-romfs_dir = "romfs"
+[package.metadata.docs.rs]
+default-target = "armv6k-nintendo-3ds"

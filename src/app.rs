@@ -50,7 +50,7 @@ impl App {
 
                 if save_exists {
                     // If it does, but we can't read it, then something is wrong
-                    panic!("Failed to read save file, fix it or delete it and restart the game");
+                    panic!("{}", t!("read_save_fail"));
                 }
 
                 // If it doesn't, then create a new save file

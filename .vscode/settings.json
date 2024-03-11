@@ -1,0 +1,4 @@
+{
+    "rust-analyzer.check.overrideCommand": ["cargo", "3ds", "check", "--workspace", "--message-format=json"],
+    "rust-analyzer.cargo.buildScripts.overrideCommand": ["cargo", "3ds", "check", "--quiet", "--workspace", "--message-format=json"]
+}
