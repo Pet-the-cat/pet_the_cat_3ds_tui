@@ -9,7 +9,7 @@ WARNING: The 3D mode is a little bit junky, that can cause eye strain and epilep
 
 ## Screenshots
 
-![Top screenshots](docs/screenshots/Top-v0.2.0.bmp)
+![Top screenshots](docs/screenshots/Top-v0.2.0.bmp)  
 <img style="margin-left: 40px" src="docs/screenshots/Bottom-v0.2.0.bmp" alt="Bottom screenshots">
 
 ## Building
