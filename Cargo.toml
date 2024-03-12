@@ -1,7 +1,7 @@
 [package]
 name = "pet_the_cat_3ds_tui"
 version = "0.2.0"
-authors = ["Tom Olivier <contact.tom60@proton.me>"]
+authors = ["Tom60", "Tom Olivier <contact.tom60@proton.me>"]
 description = "A 3DS game that lets you pet cats."
 repository = "https://github.com/Pet-the-cat/pet_the_cat_3ds_tui"
 keywords = ["3ds", "rust", "game", "pet", "cat", "homebrew", "cookie", "clicker"]

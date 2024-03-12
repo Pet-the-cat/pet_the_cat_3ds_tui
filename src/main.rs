@@ -43,7 +43,7 @@ fn main() {
     let cfgu = Cfgu::new().expect("Couldn't obtain CFGU controller");
 
     // Set the current localization to the system's locale.
-    localization::set_to_system(cfgu.language().unwrap_or(Language::English));
+    //localization::set_to_system(cfgu.language().unwrap_or(Language::English));
   
     // Initialize the application.
     let mut app = App::new();
