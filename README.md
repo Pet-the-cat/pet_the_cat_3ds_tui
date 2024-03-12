@@ -3,14 +3,14 @@
 A 3DS game that lets you pet cats.  
 This is Cookie clicker like game, but with cats.  
 
-Powered by [ctru-rs](https://github.com/rust3ds/ctru-rs)!
+Powered by [ctru-rs](https://github.com/rust3ds/ctru-rs)! (except that I'm using a [modified version](https://github.com/Tom60-rust3ds/ctru-rs) to enable the 3D console)
 
-WARNING: The 3D mode is a little bit junky, that can cause eye strain and epilepsy!
+WARNING: The 3D mode is a little bit junky, that can cause eye strain and bad stuf for photosensitive! (Be careful :3)
 
 ## Screenshots
 
 ![Top screenshots](docs/screenshots/Top-v0.2.0.bmp)  
-<img style="margin-left: 40px" src="docs/screenshots/Bottom-v0.2.0.bmp" alt="Bottom screenshots">
+&emsp;&emsp;&ensp;![Bottom screenshots](docs/screenshots/Bottom-v0.2.0.bmp)
 
 ## Building
 
