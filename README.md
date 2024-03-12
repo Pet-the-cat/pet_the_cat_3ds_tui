@@ -9,8 +9,8 @@ WARNING: The 3D mode is a little bit junky, that can cause eye strain and bad st
 
 ## Screenshots
 
-![Top screenshots](docs/screenshots/Top-v0.2.0.bmp)  
-&emsp;&emsp;&ensp;![Bottom screenshots](docs/screenshots/Bottom-v0.2.0.bmp)
+![Top screenshots](docs/screenshots/Top-v0.3.0.bmp)  
+&emsp;&emsp;&ensp;![Bottom screenshots](docs/screenshots/Bottom-v0.3.0.bmp)
 
 ## Building
 
