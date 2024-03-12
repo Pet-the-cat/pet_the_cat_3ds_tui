@@ -10,7 +10,7 @@ use ctru::console::Console;
 /// * `top_console` - The top console.
 /// * `bottom_console` - The bottom console.
 pub fn print(app: &App, top_console: &Console, bottom_console: &Console) {
-    print_top_screen(app, top_console, true);
+    print_top_screen(app, top_console);
     print_bottom_screen(app, bottom_console);
 }
 
@@ -22,8 +22,8 @@ pub fn print(app: &App, top_console: &Console, bottom_console: &Console) {
 /// * `top_screen` - The top 3D screen.
 /// * `bottom_console` - The bottom console.
 pub fn print_3d(app: &App, top_left: &Console, top_right: &Console, bottom: &Console) {
-    print_top_screen(app, top_left, true);
-    print_top_screen(app, top_right, false);
+    print_top_screen(app, top_left);
+    print_top_screen(app, top_right);
 
     print_bottom_screen(app, bottom);
 }
@@ -44,11 +44,9 @@ pub fn print_3d(app: &App, top_left: &Console, top_right: &Console, bottom: &Con
 /// 
 /// The maximum length of the text is 50 characters and 100 in wide mode and the maximum height is 30.
 /// `console.max_width()`
-fn print_top_screen(app: &App, console: &Console, clear: bool) {
+fn print_top_screen(app: &App, console: &Console) {
     console.select();
-    if clear {
-        console.clear();
-    }
+    console.clear();
 
     print!("\x1b[1m\x1b[33m"); // Set the color to yellow
     print_center(t!("title").to_string(), 5, console);
