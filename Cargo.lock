@@ -403,7 +403,7 @@ dependencies = [
 
 [[package]]
 name = "pet_the_cat_3ds_tui"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "ctru-rs",
  "pet_the_cat",

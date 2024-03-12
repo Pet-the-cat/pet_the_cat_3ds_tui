@@ -28,17 +28,17 @@ pub fn handle_key_events(hid: &mut Hid, app: &mut App) -> bool {
         let touch: (u16, u16) = hid.touch_position();
 
         // First row
-        if touch.1 >= 40 && touch.1 < 80 {
+        if touch.1 >= 20 && touch.1 < 60 {
             app.game.pet_cat();
             return true;
         }
         // Second row
-        if touch.1 >= 120 && touch.1 < 160 {
+        if touch.1 >= 100 && touch.1 < 120 {
             app.game.buy_multiplier();
             return true;
         }
         // Third row
-        if touch.1 >= 200 && touch.1 < 240{
+        if touch.1 >= 180 && touch.1 < 220{
             app.game.buy_petting_machine();
             return true;
         }

@@ -13,9 +13,9 @@ petting_machine:
   en: "Petting machine: %{petting_machine}"
   fr: "Machine à caresser : %{petting_machine}"
 
-pet_the_cat:
-  en: "Pet the cat"
-  fr: "Caresser le chat"
+pet:
+  en: "Pet!"
+  fr: "Caresser !"
 multiplier_buy_text:
   en: "Buy a multiplier"
   fr: "Acheter multiplicateur"

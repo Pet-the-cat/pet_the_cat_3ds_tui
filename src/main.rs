@@ -17,13 +17,16 @@ fn main() {
     error::set_panic_hook(false);
 
     // Initialize the application runtime
-    let apt = Apt::new().expect("Couldn't obtain GFX controller");
+    let mut apt = Apt::new().expect("Couldn't obtain GFX controller");
 
     // Initialize the controller inputs
     let mut hid = Hid::new().expect("Couldn't obtain HID controller");
 
     // Initialize the graphics
     let gfx = Gfx::new().expect("Couldn't obtain APT controller");
+
+    // Set cpu time limit
+    apt.set_app_cpu_time_limit(5).expect("Couldn't set CPU time limit");
 
     // Set the top screen to 3D mode
     let top_screen = TopScreen3D::from(&gfx.top_screen);
@@ -37,21 +40,16 @@ fn main() {
     let bottom_console = Console::new(gfx.bottom_screen.borrow_mut(), Side::Left);
 
     // Set the left console window for the 3D effect.
-    left_console.set_window(1, 2, left_console.max_width() - 1, 28).expect("Couldn't set window");
+    left_console.set_window(1, 1, left_console.max_width() - 1, 28).expect("Couldn't set window");
 
     // Initialize the CFGU service to retrieve all wanted information.
     let cfgu = Cfgu::new().expect("Couldn't obtain CFGU controller");
 
     // Set the current localization to the system's locale.
-    //localization::set_to_system(cfgu.language().unwrap_or(Language::English));
+    localization::set_to_system(cfgu.language().unwrap_or(Language::English));
   
-    // Initialize the application.
-    let mut app = App::new();
-
-    // Load the saved game state.
-    app.load();
-    
     // === Main loop ===
+    let mut app = get_app();
     let mut time = Instant::now();
     let mut refresh = false;
 
@@ -87,4 +85,25 @@ fn is_time_elapsed(time: &mut Instant) -> bool {
     }
 
     false
+}
+
+#[cfg(not(debug_assertions))]
+fn get_app() -> App {    
+    // Initialize the application.
+    let mut app = App::new();
+    
+    // Load the saved game state.
+    app.load();
+    app
+}
+
+#[cfg(debug_assertions)]
+fn get_app() -> App {
+    // Initialize the application.
+    let mut app = App::new();
+    
+    // Load the saved game state.
+    app.load();
+    app.game.multiplier = 25;
+    app
 }

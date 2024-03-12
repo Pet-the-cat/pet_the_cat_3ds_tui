@@ -28,6 +28,10 @@ pub fn print_3d(app: &App, top_left: &Console, top_right: &Console, bottom: &Con
     print_bottom_screen(app, bottom);
 }
 
+// NOTE: 0: BLACK 1: RED, 2: GREEN, 3: YELLOW, 4: BLUE, 5: MAGENTA, 6: CYAN, 7: WHITE
+// NOTE: 2: FAINT, 4: UNDERLINE
+// NOTE: [y;xH
+
 /// Print the top screen.
 /// 
 /// # Arguments
@@ -46,13 +50,17 @@ fn print_top_screen(app: &App, console: &Console, clear: bool) {
         console.clear();
     }
 
-    println!("\x1b[5;15H{}", t!("title"));
+    print!("\x1b[1m\x1b[33m"); // Set the color to yellow
+    print_center(t!("title").to_string(), 5, console);
+    print!("\x1b[39m"); // Reset the color
+ 
+    print_center(t!("cat_petted", cat_petted = app.game.cat_petted).to_string(), 10, console);
+    print_center(t!("multiplier", multiplier = app.game.multiplier).to_string(), 15, console);
+    print_center(t!("petting_machine", petting_machine = app.game.petting_machine).to_string(), 20, console);
 
-    println!("\x1b[10;15H{}", t!("cat_petted", cat_petted = app.game.cat_petted));
-    println!("\x1b[15;15H{}", t!("multiplier", multiplier = app.game.multiplier));
-    println!("\x1b[20;15H{}", t!("petting_machine", petting_machine = app.game.petting_machine));
-
-    println!("\x1b[28;2H{}", t!("save_quit_text"));
+    print_center(t!("save_quit_text").to_string(), 28, console);
+    
+    println!(); // To avoid weird behavior
 }
 
 /// Print the bottom screen.
@@ -70,22 +78,21 @@ fn print_bottom_screen(app: &App, console: &Console) {
     console.select();
     console.clear();
   
-    println!("\x1b[5;0H "); // Line space: 5
-    print_ascii_button(format!("{} (A)", t!("pet_the_cat")));// Line space: 10
+    // Reset
+    print!("\x1b[0m");
+    print_ascii_button(format!("{} (A)", t!("pet")), 3);
     
-    println!("\x1b[15;0H "); // Line space: 15
-    if app.game.cat_petted >= MULTIPLIER_COST {
-        print_ascii_button(format!("{} (B)", t!("multiplier_buy_text"))); // Line space: 20
-    }
+    apply_faint_effect(app.game.cat_petted >= MULTIPLIER_COST);
+    print_ascii_button(format!("{} (B)", t!("multiplier_buy_text")), 13);
     
-    println!("\x1b[25;0H "); // Line space: 25
-    if app.game.cat_petted >= PETTING_MACHINE_COST {
-        // TODO: Crash because the length of the text is greater than 40
-        print_ascii_button(format!("{} (X)", t!("petting_machine_buy_text"))); // Line space: 30
-    }
+    apply_faint_effect(app.game.cat_petted >= PETTING_MACHINE_COST);
+    print_ascii_button(format!("{} (X)", t!("petting_machine_buy_text")), 23);
+
+    println!(); // To avoid weird behavior
 }
 
-fn print_ascii_button(text: String) {
+// TODO: Crash because the length of the text is greater than 40
+fn print_ascii_button(text: String, heigth: u8) {
     /*  .-------------.
         |             |
         | Pet the cat |
@@ -98,9 +105,20 @@ fn print_ascii_button(text: String) {
     let text_end_pos = 28 - text_start_pos - text_len;
     let text_with_spaces = format!("{}{}{}", " ".repeat(text_start_pos), text, " ".repeat(text_end_pos));
 
-    println!("     .----------------------------.");
-    println!("     |                            |");
-    println!("     |{}|", text_with_spaces);
-    println!("     |                            |");
-    println!("     '----------------------------'");
+    print!("\x1b[{};6H.----------------------------.", heigth);
+    print!("\x1b[{};6H|                            |", heigth + 1);
+    print!("\x1b[{};6H|{}|"                          , heigth + 2, text_with_spaces);
+    print!("\x1b[{};6H|                            |", heigth + 3);
+    print!(  "\x1b[{};6H'----------------------------'", heigth + 4);
  }
+
+fn print_center(text: String, heigth: usize, console: &Console) {
+    let max_size = usize::from(console.max_width());
+    let text_start_pos = (max_size - text.len()) / 2;
+
+    print!("\x1b[{};{}H{}", heigth, text_start_pos, text);
+}
+
+fn apply_faint_effect(condition: bool) {
+    print!("{}", if condition { "\x1b[22m" } else { "\x1b[2m" }); // Faint effect
+}
